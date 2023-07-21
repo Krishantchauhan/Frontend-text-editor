@@ -1,4 +1,4 @@
-// import { useState } from 'react';
+import { useState } from "react";
 
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/material.css";
@@ -35,9 +35,15 @@ const Header = styled(Box)`
   font-weight: 700;
 `;
 
-const Editor = ({ heading, icon, color }) => {
+const Editor = ({ heading, icon, color, value, onChange }) => {
+  const [open, setOpen] = useState(true);
+
+  const handleChange = (editor, data, value) => {
+    onChange(value);
+  };
+
   return (
-    <Container>
+    <Container style={open ? null : { flexGrow: 0 }}>
       <Header>
         <Logo>
           <Box
@@ -57,10 +63,17 @@ const Editor = ({ heading, icon, color }) => {
           </Box>
           {heading}
         </Logo>
-        <CloseFullscreenIcon />
+        <CloseFullscreenIcon
+          className="Full-screen-Icon"
+          fontSize="small"
+          style={{ alignSelf: "center" }}
+          onClick={() => setOpen((prevState) => !prevState)}
+        />
       </Header>
       <ControlledEditor
         className="controlled-editor"
+        value={value}
+        onBeforeChange={handleChange}
         options={{
           theme: "material",
           lineNumbers: true,
