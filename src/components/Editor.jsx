@@ -13,10 +13,18 @@ import CloseFullscreenIcon from "@mui/icons-material/CloseFullscreen";
 
 import "../App.css";
 
-const Heading = styled(Box)`
-  background: #1d1e22;
+const Container = styled(Box)`
+  flex-grow: 1;
+  flex-basic: 0;
   display: flex;
-  padding: 4px 12px;
+  flex-direction: column;
+  padding: 0 8px 8px;
+`;
+
+const Logo = styled(Box)`
+  background: #1d1e22;
+  padding: 9px 12px;
+  display: flex;
 `;
 
 const Header = styled(Box)`
@@ -27,38 +35,38 @@ const Header = styled(Box)`
   font-weight: 700;
 `;
 
-const Editor = () => {
+const Editor = ({ heading, icon, color }) => {
   return (
-    <Box>
+    <Container>
       <Header>
-        <Heading>
+        <Logo>
           <Box
             component="span"
             style={{
-              background: "red",
+              background: color,
               height: 18,
-              width: 15,
+              width: 18,
               display: "flex",
               placeContent: "center",
               borderRadius: 5,
               marginRight: 2,
               paddingBottom: 2,
+              color: "black",
             }}>
-            /
+            {icon}
           </Box>
-          HTML
-        </Heading>
+          {heading}
+        </Logo>
         <CloseFullscreenIcon />
       </Header>
       <ControlledEditor
         className="controlled-editor"
-
         options={{
           theme: "material",
           lineNumbers: true,
         }}
       />
-    </Box>
+    </Container>
   );
 };
 
