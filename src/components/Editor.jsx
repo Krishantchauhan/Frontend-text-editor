@@ -1,15 +1,17 @@
 // import { useState } from 'react';
 
-import 'codemirror/lib/codemirror.css';
-import 'codemirror/theme/material.css';
-import 'codemirror/mode/xml/xml';
-import 'codemirror/mode/javascript/javascript';
-import 'codemirror/mode/css/css';
+import "codemirror/lib/codemirror.css";
+import "codemirror/theme/material.css";
+import "codemirror/mode/xml/xml";
+import "codemirror/mode/javascript/javascript";
+import "codemirror/mode/css/css";
 
-import { Controlled as CodeMirror } from "react-codemirror2";
+import { Controlled as ControlledEditor } from "react-codemirror2";
 
 import { Box, styled } from "@mui/material";
 import CloseFullscreenIcon from "@mui/icons-material/CloseFullscreen";
+
+import "../App.css";
 
 const Heading = styled(Box)`
   background: #1d1e22;
@@ -48,7 +50,14 @@ const Editor = () => {
         </Heading>
         <CloseFullscreenIcon />
       </Header>
-      {/* <ControlledEditor /> */}
+      <ControlledEditor
+        className="controlled-editor"
+
+        options={{
+          theme: "material",
+          lineNumbers: true,
+        }}
+      />
     </Box>
   );
 };
