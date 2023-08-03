@@ -5,7 +5,14 @@ import { Box, styled } from "@mui/material";
 import { DataContext } from "../context/DataProvider";
 
 const Container = styled(Box)`
-  height: 41vh;
+  height: 75vh;
+  width: 100%;
+`;
+
+const ParentContainer = styled(Box)`
+  display: flex;
+  justify-content: flex-end; /* Move the Result component to the right side */
+  align-items: flex-start; /* Move the Result component to the top side */
 `;
 
 const Result = () => {
@@ -27,19 +34,22 @@ const Result = () => {
     }, 1500);
 
     return () => clearTimeout(timeout);
-  }, [html, css, js]);
+  });
+  // }, [html, css, js]);
 
   return (
-    <Container style={html || css || js ? null : { background: "#444857" }}>
-      <iframe
-        srcDoc={src}
-        title="output"
-        sandbox="allow-scripts"
-        frameBorder="0"
-        width="100%"
-        height="100%"
-      />
-    </Container>
+    <ParentContainer>
+      <Container style={html || css || js ? null : { background: "#fafafa" }}>
+        <iframe
+          srcDoc={src}
+          title="output"
+          sandbox="allow-scripts"
+          frameBorder="none"
+          width="320%"
+          height="173%"
+        />
+      </Container>
+    </ParentContainer>
   );
 };
 

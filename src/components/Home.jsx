@@ -1,14 +1,14 @@
-import Header from "./Header";
+// import Header from "./Header";
 import Code from "./Code.jsx";
 
-import Result from "./Result.jsx";
+// import Result from "./Result.jsx";
 
 const Home = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Code />
-      <Result />
+      {/* <Result /> */}
     </>
   );
 };

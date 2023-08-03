@@ -2,20 +2,31 @@ import { useContext } from "react";
 
 import Editor from "./Editor";
 
+import Result from "./Result";
+
 import { Box, styled } from "@mui/material";
 
 import { DataContext } from "../context/DataProvider";
 
+const ParentContainer = styled(Box)`
+  display: flex;
+  width :100%;
+  height:100%;
+`;
+
 const Container = styled(Box)`
   background-color: #060606;
-  height: 50vh;
+  height: 130vh;
   display: flex;
+  flex-direction: column;
+  width:75vh; //adding 
 `;
 
 const Code = () => {
   const { html, css, js, setHtml, setCss, setJs } = useContext(DataContext);
 
   return (
+    <ParentContainer>
     <Container>
       <Editor
         heading="HTML"
@@ -39,6 +50,8 @@ const Code = () => {
         onChange={setJs}
       />
     </Container>
+    {<Result />}
+    </ParentContainer>
   );
 };
 
