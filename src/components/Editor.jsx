@@ -14,11 +14,11 @@ import CloseFullscreenIcon from "@mui/icons-material/CloseFullscreen";
 import "../App.css";
 
 const Container = styled(Box)`
-  flex-grow: 1;
+  flex-grow: 50;
   flex-basic: 0;
   display: flex;
   flex-direction: column;
-  padding: 0 8px 8px;
+  padding: 0 8px 0;
 `;
 
 const Logo = styled(Box)`
@@ -43,7 +43,7 @@ const Editor = ({ heading, icon, color, value, onChange }) => {
   };
 
   return (
-    <Container style={open ? null : { flexGrow: 0 }}>
+    <Container style={open ? null : { flexGrow: 1 }}>
       <Header>
         <Logo>
           <Box
